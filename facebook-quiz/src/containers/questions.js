@@ -7,15 +7,18 @@ import HighScore from './highScore'
 class Questions extends Component {
 
 state={
-  queue: 1
+  queue: 1,
+  user_data: this.props.user_data
   //the entire object with all the data for the specific user
   //a user id
 }
 
 
 
-//componantDidMount
-// get all the data and set state
+
+componentDidMount(){
+  console.log(this.state.user_data)
+}
 
 questions={
 1:function (){

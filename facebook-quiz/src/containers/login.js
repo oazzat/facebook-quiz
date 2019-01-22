@@ -7,16 +7,57 @@ class Login extends Component{
 
  state={
    login: false,
-   error: 'Please Log In'
+   error: 'Please Log In',
+   username: "",
+   password: ""
  }
 
 
  login = (e) => {
-   // make a fetch request and psot credentials, response would tell if success or not.
-   this.setState({
-     login:true
+   e.preventDefault()
+   let username = this.state.username
+   let password = this.state.password
+
+   fetch('http://localhost:3000/api/v1/users', {
+     method: "POST",
+     headers: {
+       "Content-Type": "application/json"
+     },
+     body: JSON.stringify({
+       email: username,
+       pass: password
+     })
    })
-   console.log(e.target)
+   .then(resp => resp.json())
+   .then(data => {
+     if (data.status) {
+       this.setState({
+         error: "incorrect username or password"
+       })
+     }
+     else {
+       console.log(data)
+       this.setState({
+         login:true,
+         user_data: data
+       })
+     }
+   })
+
+
+ }
+
+ usernamechangeHandler=(e)=>{
+   // console.log(e.target.value)
+   this.setState({
+     username: e.target.value
+   })
+ }
+
+ passwordchangeHandler=(e)=>{
+   this.setState({
+     password: e.target.value
+   })
  }
 
 render(){
@@ -25,14 +66,14 @@ render(){
   return(
   <div>
   <h3>{this.state.error}</h3>
-  <form>
+  <form >
   <label>
     Name:
-    <input type="text" name="name" />
+    <input onChange={this.usernamechangeHandler} type="text" name="name" value={this.state.username} />
   </label>
   <label>
     Password:
-    <input type="password" name="password" />
+    <input onChange={this.passwordchangeHandler} type="password" name="password" value={this.state.password}/>
   </label>
   <input onClick= {(e)=> this.login(e)} type="submit" value="Login" />
 </form>
@@ -40,7 +81,9 @@ render(){
 )
 }
  else {
-   return <Questions/>
+   return <Questions
+   user_data= {this.state.user_data}
+   />
    //also send the user id as a prop
  }
 }

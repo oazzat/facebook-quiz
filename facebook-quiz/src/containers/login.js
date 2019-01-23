@@ -7,7 +7,7 @@ class Login extends Component{
 
  state={
    loggedIn: false,
-   error: 'Please Log In',
+   error: 'Log In To Your Facebook Account!',
    username: "",
    password: "",
    currentUser: {},
@@ -33,7 +33,7 @@ class Login extends Component{
    .then(resp => resp.json())
    .then(data => {
      if (data.status) {
-         alert("incorrect username or password")
+         alert("Incorrect username or password")
      }
      else {
        console.log(data)
@@ -78,10 +78,12 @@ render(){
     Email:
     <input onChange={this.usernamechangeHandler} type="text" name="name" value={this.state.username} />
   </label>
+  <br></br>
   <label>
     Password:
     <input onChange={this.passwordchangeHandler} type="password" name="password" value={this.state.password}/>
   </label>
+  <br></br>
   <input onClick= {(e)=> this.login(e)} type="submit" value="Log In!" />
 </form>
   </div>

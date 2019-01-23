@@ -27,9 +27,9 @@ const makeChoices = () =>{
 
   const checkAnswer = (e) =>{
     if (e.target.id === props.friend.id){
-      console.log("CORRECT");}
+      props.updateScore("+")}
       else{
-        console.log("WRONG");
+        props.updateScore("-");
       }
   }
 
@@ -60,16 +60,16 @@ const makeChoices = () =>{
 
 const displayHeading = () =>{
   if (props.type.includes("birthday")){
-    return <h1>{props.type + props.friend.attributes.birthday}</h1>
+    return <h4>{props.type + props.friend.attributes.birthday}</h4>
   }
   else if (props.type.includes("current")){
-    return <h1>{props.type + props.friend.attributes["current-city"]}</h1>
+    return <h4>{props.type + props.friend.attributes["current-city"]}</h4>
   }
   else if (props.type.includes("quote")){
-    return <h1>{props.type + props.friend.attributes.quote}</h1>
+    return <h4>{props.type + props.friend.attributes.quote}</h4>
   }
   else if(props.type.includes("hometown")){
-    return <h1>{props.type + props.friend.attributes.hometown}</h1>
+    return <h4>{props.type + props.friend.attributes.hometown}</h4>
   }
 
 }

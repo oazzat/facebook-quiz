@@ -17,10 +17,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
 
-        <Switch>
-        <Route path="/high" component={HighScoreComponent} />
-        <Route path="/" component={Login} />
-        </Switch>
+        <Login/>
 
 
         </header>
@@ -28,5 +25,10 @@ class App extends Component {
     );
   }
 }
+
+// <Switch>
+// <Route path="/high" component={HighScoreComponent} />
+// <Route path="/" component={Login} />
+// </Switch>
 
 export default App;

@@ -6,10 +6,12 @@ import LoginComponent from '../components/loginComponent.js'
 class Login extends Component{
 
  state={
-   login: false,
+   loggedIn: false,
    error: 'Please Log In',
    username: "",
-   password: ""
+   password: "",
+   currentUser: {},
+   friendsList: []
  }
 
 
@@ -31,17 +33,22 @@ class Login extends Component{
    .then(resp => resp.json())
    .then(data => {
      if (data.status) {
-       this.setState({
-         error: "incorrect username or password"
-       })
+         alert("incorrect username or password")
      }
      else {
        console.log(data)
        this.setState({
-         login:true,
-         user_data: data
+         loggedIn:true,
+         currentUser: data
        })
      }
+   })
+   .then( () => {
+     console.log(this.state.currentUser);
+     // debugger
+     fetch(`http://localhost:3000/api/v1/users/${this.state.currentUser.data.id}`)
+      .then(res => res.json())
+      .then(data => this.setState({friendsList: data["data"]}))
    })
 
 
@@ -62,27 +69,29 @@ class Login extends Component{
 
 render(){
 
-  if (!this.state.login){
+  if (!this.state.loggedIn){
   return(
   <div>
   <h3>{this.state.error}</h3>
   <form >
   <label>
-    Name:
+    Email:
     <input onChange={this.usernamechangeHandler} type="text" name="name" value={this.state.username} />
   </label>
   <label>
     Password:
     <input onChange={this.passwordchangeHandler} type="password" name="password" value={this.state.password}/>
   </label>
-  <input onClick= {(e)=> this.login(e)} type="submit" value="Login" />
+  <input onClick= {(e)=> this.login(e)} type="submit" value="Log In!" />
 </form>
   </div>
 )
 }
  else {
+   console.log(this.state.friendsList);
    return <Questions
-   user_data= {this.state.user_data}
+   currentUser= {this.state.currentUser}
+   friendsList= {this.state.friendsList}
    />
    //also send the user id as a prop
  }

@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 
-let highScoreComponent= () => {
+let HighScoreComponent= () => {
 return(
   <div>
   <h3>HighScore!</h3>
-  {setTimeout(function() {window.location.reload()}, 2000)}
+  
   </div>
 )
 }
 
-export default highScoreComponent
+export default HighScoreComponent
+
+// {setTimeout(function() {window.location.reload()}, 2000)}

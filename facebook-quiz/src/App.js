@@ -14,7 +14,7 @@ import HighScoreComponent from "./components/highScoreComponent"
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div style={{background: "red", backgroundImage: "https://cdn.vox-cdn.com/thumbor/KksSTPxukuuyrCHq1bnKlYdzYl8=/0x0:2040x1360/1820x1213/filters:focal(857x517:1183x843):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/59172625/mdoying_180118_2249_facebook_0445stills_3.0.jpg"}} className="App">
         <header className="App-header">
 
         <Login/>

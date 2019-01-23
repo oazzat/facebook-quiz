@@ -10,7 +10,7 @@ class Login extends Component{
    error: 'Log In To Your Facebook Account!',
    username: "",
    password: "",
-   currentUser: {},
+   currentUser: "",
    friendsList: []
  }
 
@@ -34,22 +34,21 @@ class Login extends Component{
    .then(data => {
      if (data.status) {
          alert("Incorrect username or password")
+
      }
      else {
        console.log(data)
        this.setState({
          loggedIn:true,
          currentUser: data
+       }, ()=>{
+         fetch(`http://localhost:3000/api/v1/users/${this.state.currentUser.data.id}`)
+          .then(res => res.json())
+          .then(data => this.setState({friendsList: data["data"]}))
        })
      }
    })
-   .then( () => {
-     console.log(this.state.currentUser);
-     // debugger
-     fetch(`http://localhost:3000/api/v1/users/${this.state.currentUser.data.id}`)
-      .then(res => res.json())
-      .then(data => this.setState({friendsList: data["data"]}))
-   })
+   
 
 
  }

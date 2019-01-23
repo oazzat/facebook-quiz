@@ -137,8 +137,9 @@ render(){
   // debugger
   console.log("state",this.state)
 // <img src={this.props.friendsList[5].attributes.img}/>
+console.log("LITSSSS",this.props.friendsList)
   return(
-    <div>
+    <div >
     <div>
     <h1>Welcome to the facebook quiz app!</h1>
     <h2>Total: {this.state.total} Correct:{this.state.correct}</h2>

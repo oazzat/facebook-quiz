@@ -60,16 +60,16 @@ const makeChoices = () =>{
 
 const displayHeading = () =>{
   if (props.type.includes("birthday")){
-    return <h4>{props.type + props.friend.attributes.birthday}</h4>
+    return (<div><h4>{props.type}</h4> <h5>{props.friend.attributes.birthday}</h5></div>)
   }
   else if (props.type.includes("current")){
-    return <h4>{props.type + props.friend.attributes["current-city"]}</h4>
+    return (<div><h4>{props.type}</h4> <h5>{props.friend.attributes["current-city"]}</h5></div>)
   }
   else if (props.type.includes("quote")){
-    return <h4>{props.type + props.friend.attributes.quote}</h4>
+    return (<div><h4>{props.type}</h4> <h5>{props.friend.attributes.quote}</h5></div>)
   }
   else if(props.type.includes("hometown")){
-    return <h4>{props.type + props.friend.attributes.hometown}</h4>
+    return (<div><h4>{props.type}</h4> <h5>{props.friend.attributes.hometown}</h5></div>)
   }
 
 }

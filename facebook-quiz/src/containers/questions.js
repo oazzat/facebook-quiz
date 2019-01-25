@@ -143,7 +143,7 @@ console.log("LITSSSS",this.props.friendsList)
     <div>
     <h1>Welcome to the facebook quiz app!</h1>
     <h2>Total: {this.state.total} Correct:{this.state.correct}</h2>
-    <button onClick={()=>{this.sepList(); this.makeQuestions()}}>Click to get started</button>
+    <button onClick={()=>{this.sepList(); this.makeQuestions()}}>Click to generate question!</button>
     </div>
     <div>
     {this.displayQuest()}

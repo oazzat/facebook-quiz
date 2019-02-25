@@ -91,7 +91,7 @@ render(){
 
   if (!this.state.loggedIn){
   return(
-  <div>
+  <div style={{ color: 'black' }}>
   <h1>{this.state.error}</h1>
   <form >
   <label>

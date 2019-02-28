@@ -1,17 +1,36 @@
 import React, { Component } from 'react';
 
 
-const questionComponent = (props)=> {
-console.log(props)
-//<button onClick={() => props.clickHandler()}>{props.question}</button>
+class QuestionComponent extends Component {
+// console.log(this.props)
+//<button onClick={() => this.props.clickHandler()}>{this.props.question}</button>
 
+checkAnswer = (e) =>{
+  e.persist()
+  if (e.target.id === this.props.friend.id){
+    e.target.parentElement.style.backgroundColor = 'green'
+    setTimeout((e)=>{
+      this.props.updateScore("+")
+      e.target.parentElement.style.backgroundColor = 'rgba(255, 255, 255, 0.8)'
+    }, 1000,e)
+  }
+    else{
+      document.getElementById(this.props.friend.id).parentElement.style.backgroundColor = 'green'
+      e.target.parentElement.style.backgroundColor = 'red'
+      setTimeout((e)=>{
+        this.props.updateScore("-")
+        e.target.parentElement.style.backgroundColor = 'rgba(255, 255, 255, 0.8)'
+        document.getElementById(this.props.friend.id).parentElement.style.backgroundColor = 'rgba(255, 255, 255, 0.8)'
+      }, 1000,e)
+    }
+}
 
-const makeChoices = () =>{
+makeChoices = () =>{
   let allChoices = []
-  allChoices.push(props.friend)
+  allChoices.push(this.props.friend)
 
   while (allChoices.length<4){
-  let temp = props.allFriends[Math.floor(Math.random()*props.allFriends.length)]
+  let temp = this.props.allFriends[Math.floor(Math.random()*this.props.allFriends.length)]
   if (!allChoices.includes(temp)){
     allChoices.push(temp)
   }
@@ -25,63 +44,87 @@ const makeChoices = () =>{
     }
   }
 
-  const checkAnswer = (e) =>{
-    if (e.target.id === props.friend.id){
-      props.updateScore("+")}
-      else{
-        props.updateScore("-");
-      }
-  }
+  // const checkAnswer = (e) =>{
+  //   // debugger
+  //   if (e.target.id === this.props.friend.id){
+  //     e.target.parentElement.style.backgroundColor = 'green'
+  //     setTimeout(()=>{
+  //       this.props.updateScore("+")
+  //     }, 2000)
+  //   }
+  //     else{
+  //       this.props.updateScore("-");
+  //     }
+  // }
 
   return ([
+    <div className="grid-item" style={{backgroundColor: 'rgba(255, 255, 255, 0.8)'}}>
+    <h3 style={{color: '#2096F3'}}>{newArr[0].attributes.name}</h3>
+    <img src={newArr[0].attributes.img} alt="NO PICTURE AVAILABLE"/>
+    {console.log("IMAGE",newArr[0].attributes.img)}
+    <br></br>
+    <button id={newArr[0].id} onClick={this.checkAnswer}>Pick me!</button>
+    </div>,
 
-    <h3>{newArr[0].attributes.name}</h3>,
-    <img src={newArr[0].attributes.img} alt="NO PICTURE AVAILABLE"/>,
-    <br></br>,
-    <button id={newArr[0].id} onClick={checkAnswer}>Pick me!</button>,
+    <div className="grid-item" style={{backgroundColor: 'rgba(255, 255, 255, 0.8)'}}>
+    <h3 style={{color: '#2096F3'}}>{newArr[1].attributes.name}</h3>
+    <img src={newArr[1].attributes.img} alt="NO PICTURE AVAILABLE"/>
+    {console.log("IMAGE",newArr[1].attributes.img)}
 
-    <h3>{newArr[1].attributes.name}</h3>,
-    <img src={newArr[1].attributes.img} alt="NO PICTURE AVAILABLE"/>,
-    <br></br>,
-    <button id={newArr[1].id} onClick={checkAnswer}>Pick me!</button>,
+    <br></br>
+    <button id={newArr[1].id} onClick={this.checkAnswer}>Pick me!</button>
+    </div>,
 
-    <h3>{newArr[2].attributes.name}</h3>,
-    <img src={newArr[2].attributes.img} alt="NO PICTURE AVAILABLE"/>,
-    <br></br>,
-    <button id={newArr[2].id} onClick={checkAnswer}>Pick me!</button>,
+    <div  className="grid-item" style={{backgroundColor: 'rgba(255, 255, 255, 0.8)'}}>
+    <h3 style={{color: '#2096F3'}}>{newArr[2].attributes.name}</h3>
+    <img src={newArr[2].attributes.img} alt="NO PICTURE AVAILABLE"/>
+    {console.log("IMAGE",newArr[2].attributes.img)}
 
-    <h3>{newArr[3].attributes.name}</h3>,
-    <img src={newArr[3].attributes.img} alt="NO PICTURE AVAILABLE"/>,
-    <br></br>,
-    <button id={newArr[3].id} onClick={checkAnswer}>Pick me!</button>,
+    <br></br>
+    <button id={newArr[2].id} onClick={this.checkAnswer}>Pick me!</button>
+    </div>,
+
+    <div className="grid-item" style={{backgroundColor: 'rgba(255, 255, 255, 0.8)'}}>
+    <h3 style={{color: '#2096F3'}}>{newArr[3].attributes.name}</h3>,
+    <img src={newArr[3].attributes.img} alt="NO PICTURE AVAILABLE"/>
+    {console.log("IMAGE",newArr[3].attributes.img)}
+
+    <br></br>
+    <button id={newArr[3].id} onClick={this.checkAnswer}>Pick me!</button>
+    </div>
   ])
 
 }
 
-const displayHeading = () =>{
-  if (props.type.includes("birthday")){
-    return (<div><h4>{props.type}</h4> <h5>{props.friend.attributes.birthday}</h5></div>)
+displayHeading = () =>{
+  if (this.props.type.includes("birthday")){
+    return (<span style={{textShadow: '1px 1px white',color: 'black'}}><h4>{this.props.type}</h4> <h5>{this.props.friend.attributes.birthday}</h5></span>)
   }
-  else if (props.type.includes("current")){
-    return (<div><h4>{props.type}</h4> <h5>{props.friend.attributes["current-city"]}</h5></div>)
+  else if (this.props.type.includes("current")){
+    return (<span style={{textShadow: '1px 1px white',color: 'black'}}><h4>{this.props.type}</h4> <h5>{this.props.friend.attributes["current-city"]}</h5></span>)
   }
-  else if (props.type.includes("quote")){
-    return (<div><h4>{props.type}</h4> <h5>{props.friend.attributes.quote}</h5></div>)
+  else if (this.props.type.includes("quote")){
+    return (<span style={{textShadow: '1px 1px white',color: 'black'}}><h4>{this.props.type}</h4> <h5 style={{width: '1000px', margin: '0 auto'}}>{this.props.friend.attributes.quote}</h5></span>)
   }
-  else if(props.type.includes("hometown")){
-    return (<div><h4>{props.type}</h4> <h5>{props.friend.attributes.hometown}</h5></div>)
+  else if(this.props.type.includes("hometown")){
+    return (<span style={{textShadow: '1px 1px white',color: 'black'}}><h4>{this.props.type}</h4> <h5>{this.props.friend.attributes.hometown}</h5></span>)
   }
 
 }
-
+render(){
 return (
   <div>
-  <h4>{displayHeading()}</h4>
+      <div>
+      <h4>{this.displayHeading()}</h4>
+      </div>
 
-  {makeChoices()}
+      <div className="grid-container">
+      {this.makeChoices()}
+      </div>
  </div>
 )
+}
 
 }
 
-export default questionComponent
+export default QuestionComponent

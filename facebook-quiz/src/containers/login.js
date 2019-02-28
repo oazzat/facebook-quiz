@@ -9,13 +9,14 @@ class Login extends Component{
 
  state={
    loggedIn: false,
-   error: 'Log In To Your Facebook Account!',
+   error: 'Log In To Your Facebook Account To Get Started!',
    username: "",
    password: "",
    currentUser: {},
    friendsList: [],
    loading: false
  }
+
 
 
  login = (e) => {
@@ -47,6 +48,7 @@ class Login extends Component{
      }
      else {
        console.log(data)
+       this.props.loggedIn()
        this.setState({
          loggedIn:true,
          currentUser: data,
@@ -91,7 +93,8 @@ render(){
 
   if (!this.state.loggedIn){
   return(
-  <div style={{ color: 'black' }}>
+  // <div style={{backgroundColor: "red",textShadow: '5px 5px black', boxShadow: '0 0 5px 10px #555', opacity: .5}}>
+  <div style={{textShadow: '2px 2px black'}}>
   <h1>{this.state.error}</h1>
   <form >
   <label>
@@ -110,6 +113,7 @@ render(){
 )
 }
  else {
+
    return <Questions
    currentUser= {this.state.currentUser}
    friendsList= {this.state.friendsList}

@@ -23,7 +23,8 @@ state={
   qqs:[],
   scoreId: "",
   correct: 0,
-  total: 0
+  total: 0,
+  dispHead: true
 }
 
 componentDidMount(){
@@ -74,7 +75,7 @@ sepList = () =>{
     currentCityList: cArr,
     homeTownList: hArr,
     quoteList: qArr
-  },()=>console.log(this.state))
+  },this.makeQuestions)
 }
 
 updateScore = (addOrSub) =>{
@@ -130,6 +131,7 @@ return newArrr[Math.floor(Math.random()*4)]
 }
 
 render(){
+  console.log("YOOOO2", this.state);
   // console.log(this.state);
   // setTimeout(3000)
   console.log("props",this.props);
@@ -141,9 +143,9 @@ console.log("LITSSSS",this.props.friendsList)
   return(
     <div >
     <div>
-    <h1>Welcome to the facebook quiz app!</h1>
-    <h2>Total: {this.state.total} Correct:{this.state.correct}</h2>
-    <button onClick={()=>{this.sepList(); this.makeQuestions()}}>Click to generate question!</button>
+    {this.state.dispHead?<h1>How well do you know your friends on facebook?</h1>:null}
+    <span style={{justifyContent: "space-between",display: 'flex',fontSize: '50px'}}><p>Total Correct: {this.state.correct}</p> <p >Total Incorrect: {this.state.total - this.state.correct}</p></span>
+    <button onClick={()=>{this.sepList(); this.setState({dispHead: false});}}>Click to generate question!</button>
     </div>
     <div>
     {this.displayQuest()}

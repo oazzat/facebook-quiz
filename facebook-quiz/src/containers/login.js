@@ -9,7 +9,7 @@ class Login extends Component{
 
  state={
    loggedIn: false,
-   error: 'Log In To Your Facebook Account To Get Started!',
+   error: 'Log in to your facebook account to get started!',
    username: "",
    password: "",
    currentUser: {},
@@ -78,33 +78,38 @@ class Login extends Component{
 
 render(){
 
-  const Example = ({ type, color }) => (
-    <div style={{display: "flex", align: "center", flexDirection: "row" }}>
+  const Example = () => (
+    <React.Fragment>
+    <div style={{width: 700, align: 'center',textShadow: '2px 2px 2px #3A5998' }}>
 
-    <h1>Connecting to Facebook...</h1><br></br>
-    <ReactLoading type={type} color={"blue"} height={'100%'} width={'100%'} />
-
+    <h1 style={{color: '#3A5998',textShadow: '1px 1px white'}}>Connecting to Facebook...</h1>
     </div>
+
+    <div style={{align: 'center'}}>
+    <ReactLoading  type={'balls'} color={"#3A5998"} height={400} width={400} />
+    </div>
+    </React.Fragment>
 );
 
  if (this.state.loading){
-   return Example("balls", "#ffffff")
+   return Example()
  }
 
   if (!this.state.loggedIn){
   return(
   // <div style={{backgroundColor: "red",textShadow: '5px 5px black', boxShadow: '0 0 5px 10px #555', opacity: .5}}>
-  <div style={{textShadow: '2px 2px black'}}>
+  <div style={{color: '#3A5998',textShadow: '1px 1px white', width: '50%'}}>
   <h1>{this.state.error}</h1>
+  <br></br>
   <form >
-  <label>
-    Email:
-    <input className="ui input" onChange={this.usernamechangeHandler} type="text" name="name" value={this.state.username} />
+  <label >
+    Email:<br></br>
+    <input className="ui inp" onChange={this.usernamechangeHandler} type="text" name="name" value={this.state.username} />
   </label>
   <br></br><br/>
   <label>
-    Password:
-    <input className="ui input" onChange={this.passwordchangeHandler} type="password" name="password" value={this.state.password}/>
+    Password:<br></br>
+    <input className="ui inp" onChange={this.passwordchangeHandler} type="password" name="password" value={this.state.password}/>
   </label>
   <br></br><br/>
   <input className="ui button" onClick= {(e)=> this.login(e)} type="submit" value="Login" />

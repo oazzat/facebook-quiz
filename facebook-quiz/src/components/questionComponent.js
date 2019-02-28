@@ -62,8 +62,8 @@ makeChoices = () =>{
     <h3 style={{color: '#2096F3'}}>{newArr[0].attributes.name}</h3>
     <img src={newArr[0].attributes.img} alt="NO PICTURE AVAILABLE"/>
     {console.log("IMAGE",newArr[0].attributes.img)}
-    <br></br>
-    <button id={newArr[0].id} onClick={this.checkAnswer}>Pick me!</button>
+    <br></br><br></br>
+    <button className="button" id={newArr[0].id} onClick={this.checkAnswer}>Pick me!</button>
     </div>,
 
     <div className="grid-item" style={{backgroundColor: 'rgba(255, 255, 255, 0.8)'}}>
@@ -71,8 +71,8 @@ makeChoices = () =>{
     <img src={newArr[1].attributes.img} alt="NO PICTURE AVAILABLE"/>
     {console.log("IMAGE",newArr[1].attributes.img)}
 
-    <br></br>
-    <button id={newArr[1].id} onClick={this.checkAnswer}>Pick me!</button>
+    <br></br><br></br>
+    <button className="button" id={newArr[1].id} onClick={this.checkAnswer}>Pick me!</button>
     </div>,
 
     <div  className="grid-item" style={{backgroundColor: 'rgba(255, 255, 255, 0.8)'}}>
@@ -80,8 +80,8 @@ makeChoices = () =>{
     <img src={newArr[2].attributes.img} alt="NO PICTURE AVAILABLE"/>
     {console.log("IMAGE",newArr[2].attributes.img)}
 
-    <br></br>
-    <button id={newArr[2].id} onClick={this.checkAnswer}>Pick me!</button>
+    <br></br><br></br>
+    <button className="button" id={newArr[2].id} onClick={this.checkAnswer}>Pick me!</button>
     </div>,
 
     <div className="grid-item" style={{backgroundColor: 'rgba(255, 255, 255, 0.8)'}}>
@@ -89,25 +89,26 @@ makeChoices = () =>{
     <img src={newArr[3].attributes.img} alt="NO PICTURE AVAILABLE"/>
     {console.log("IMAGE",newArr[3].attributes.img)}
 
-    <br></br>
-    <button id={newArr[3].id} onClick={this.checkAnswer}>Pick me!</button>
+    <br></br><br></br>
+    <button className="button" id={newArr[3].id} onClick={this.checkAnswer}>Pick me!</button>
     </div>
   ])
 
 }
+// style={{color: '#3A5998',textShadow: '1px 1px white'}}
 
 displayHeading = () =>{
   if (this.props.type.includes("birthday")){
-    return (<span style={{textShadow: '1px 1px white',color: 'black'}}><h4>{this.props.type}</h4> <h5>{this.props.friend.attributes.birthday}</h5></span>)
+    return (<span style={{color: '#3A5998'}}><h3 style={{color: 'white',textShadow: '1px 1px #3A5998'}}>{this.props.type}</h3> <h5>{this.props.friend.attributes.birthday}</h5></span>)
   }
   else if (this.props.type.includes("current")){
-    return (<span style={{textShadow: '1px 1px white',color: 'black'}}><h4>{this.props.type}</h4> <h5>{this.props.friend.attributes["current-city"]}</h5></span>)
+    return (<span style={{color: '#3A5998'}}><h3 style={{color: 'white',textShadow: '1px 1px #3A5998'}}>{this.props.type}</h3> <h5>{this.props.friend.attributes["current-city"]}</h5></span>)
   }
   else if (this.props.type.includes("quote")){
-    return (<span style={{textShadow: '1px 1px white',color: 'black'}}><h4>{this.props.type}</h4> <h5 style={{width: '1000px', margin: '0 auto'}}>{this.props.friend.attributes.quote}</h5></span>)
+    return (<span style={{color: '#3A5998'}}><h3 style={{color: 'white',textShadow: '1px 1px #3A5998'}}>{this.props.type}</h3> <h5 style={{width: '1000px', margin: '0 auto'}}>{this.props.friend.attributes.quote}</h5></span>)
   }
   else if(this.props.type.includes("hometown")){
-    return (<span style={{textShadow: '1px 1px white',color: 'black'}}><h4>{this.props.type}</h4> <h5>{this.props.friend.attributes.hometown}</h5></span>)
+    return (<span style={{color: '#3A5998'}}><h3 style={{color: 'white',textShadow: '1px 1px #3A5998'}}>{this.props.type}</h3> <h5>{this.props.friend.attributes.hometown}</h5></span>)
   }
 
 }

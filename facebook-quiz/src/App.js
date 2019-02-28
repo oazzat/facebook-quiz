@@ -25,7 +25,7 @@ class App extends Component {
             <div className="App">
 
               <header className="App-header" >
-              {this.state.loIn?null:<div><h1 style={{fontSize: '70px',textShadow: '2px 2px black'}}>Welcome to Facebook Friends Quiz!</h1><br></br><br></br></div>}
+              {this.state.loIn?null:<div><h1 style={{color: 'white',fontSize: '70px',textShadow: '2px 2px 2px #3A5998'}}>Welcome to the Facebook Friends Quiz!</h1><br></br></div>}
               <Login loggedIn={()=>this.setState({loIn: true})}/>
 
 

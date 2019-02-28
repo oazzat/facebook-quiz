@@ -71,6 +71,24 @@
   -ms-transition: background-color 2s ease;
 } */
 
+.button {
+  background-color: #3A5998;
+  font-size: 20px;
+  border-radius: 12px;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.inp {
+  width: 40%;
+padding: 12px 20px;
+margin: 8px 0;
+box-sizing: border-box;
+border: 2px solid red;
+border-radius: 4px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

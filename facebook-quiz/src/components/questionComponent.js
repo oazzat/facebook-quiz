@@ -12,7 +12,7 @@ checkAnswer = (e) =>{
     setTimeout((e)=>{
       this.props.updateScore("+")
       e.target.parentElement.style.backgroundColor = 'rgba(255, 255, 255, 0.8)'
-    }, 1000,e)
+    }, 2000,e)
   }
     else{
       document.getElementById(this.props.friend.id).parentElement.style.backgroundColor = 'green'
@@ -21,7 +21,7 @@ checkAnswer = (e) =>{
         this.props.updateScore("-")
         e.target.parentElement.style.backgroundColor = 'rgba(255, 255, 255, 0.8)'
         document.getElementById(this.props.friend.id).parentElement.style.backgroundColor = 'rgba(255, 255, 255, 0.8)'
-      }, 1000,e)
+      }, 2000,e)
     }
 }
 

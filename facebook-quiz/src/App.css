@@ -46,12 +46,12 @@
 
 .grid-container {
   display: grid;
-  grid-template-columns: 500px 500px;
-  grid-template-rows: 500px 500px;
-  grid-column-gap: 50px;
-  grid-row-gap: 50px;
+  grid-template-columns: 320px 320px 320px 320px;
+  grid-template-rows: 500px;
+  grid-column-gap: 20px;
+  /* grid-row-gap: 50px; */
   background-color: #2196F3;
-  padding: 50px;
+  padding: 20px;
 }
 
 
@@ -59,8 +59,8 @@
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  font-size: 30px;
+  /* padding: 10px; */
+  font-size: 25px;
   text-align: center;
 }
 

@@ -144,8 +144,8 @@ console.log("LITSSSS",this.props.friendsList)
     <div >
     <div>
     {this.state.dispHead?<h1 style={{color: 'white', textShadow: '2px 2px 2px #3A5998'}}>How well do you know your friends on facebook?</h1>:null}
-    <span style={{justifyContent: "space-between",display: 'flex',fontSize: '50px'}}><p>Total Correct: {this.state.correct}</p> <p >Total Incorrect: {this.state.total - this.state.correct}</p></span>
-    <button className='button' onClick={()=>{this.sepList(); this.setState({dispHead: false});}}>Click to generate new question!</button>
+    <span style={{justifyContent: "space-between",display: 'flex',fontSize: '50px'}}><p>Total Correct: {this.state.correct}</p><button style={{height: '75px', marginTop: '45px'}} className='button' onClick={()=>{this.sepList(); this.setState({dispHead: false});}}>Click to generate new question!</button> <p >Total Incorrect: {this.state.total - this.state.correct}</p></span>
+
     </div>
     <div>
     {this.displayQuest()}
